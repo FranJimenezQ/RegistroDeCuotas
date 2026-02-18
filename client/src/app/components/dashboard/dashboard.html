@@ -1,0 +1,65 @@
+<div class="min-h-screen bg-gray-50">
+        <!--Header-->
+        <div class="bg-white shadow-sm border-b">
+            <div class="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div>
+                <h1 class="text-3xl font-bold text-gray-900">Sistema de Cuotas Escolares</h1>
+                <p class="text-gray-600 mt-1">{{groupName}}</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <p class="text-sm text-gray-600">{{userName}}</p>
+                        <p class="text-xs text-gray-500">
+                        {{userRole}}
+                        </p>
+                    </div>
+                <button
+                    onClick={onLogout}
+                    class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                    <span class="material-symbols-outlined">
+                    logout
+                    </span>
+                    <span>Cerrar Sesión</span>
+                </button>
+                </div>
+            </div>
+        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <!--Barra de acciones-->
+            <div class="max-w-7xl">
+                <div class="mb-6 flex flex-col sm:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <span class="absolute material-symbols-outlined left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20}>
+                            search 
+                        </span>    
+                        <input
+                        type="text"
+                        placeholder="Buscar alumno..."
+                        [value]="searchTerm"
+                        (input)="onSearch($event)"
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        >
+                    </div>
+                @if (userRole === 'treasurer'){ 
+                    <button
+                    onClick={onOpenPaymentModal}
+                    class="flex items-center justify-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                    <i class="material-symbols-outlined">add</i>
+                    <span>Registrar Cuota</span>
+                    </button>
+                }
+                </div>
+            </div>
+          <!--Resumen total anual-->
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 mb-8 text-white">
+            <h2 class="text-xl mb-2">Total Anual</h2>
+            <p class="text-4xl font-bold">${{totalAnual.toFixed(2)}}</p>
+            <p class="text-blue-100 mt-2">
+              {{payments}} pagos registrados • {{students}} alumnos
+            </p>
+          </div>
+
+      </div>
+</div>
