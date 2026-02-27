@@ -1,1 +1,31 @@
-<p>month-detail works!</p>
+<!--Header-->
+<div class="min-h-screen bg-gray-50">
+      <div class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <button
+            (click)="onBack()"
+            class="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
+          >
+            <i class="material-symbols-outlined">arrow_back_ios_new</i>
+            <span>Volver al resumen</span>
+          </button>
+          <div class="flex justify-between items-center">
+            <div>
+              <h1 class="text-3xl font-bold text-gray-900">Detalle de {{monthName}}</h1>
+              <p class="text-gray-600 mt-1">Registro de cuotas del mes</p>
+            </div>
+            @if (userRole === 'treasurer') {
+              <button
+                (click)="onOpenPaymentModal()"
+                class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <i class="material-symbols-outlined">add</i>
+                <span>Registrar Cuota</span>
+              </button> 
+            }
+          </div>
+        </div>
+      </div>
+</div>
+<!-- month detail table-->
+<app-month-detail-table [monthData]="monthData"></app-month-detail-table>

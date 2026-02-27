@@ -15,3 +15,25 @@ export interface Payment {
     createdAt?: Date;
     updateAt?: Date
 }
+
+export interface Group {
+    id: string;
+    name: string;
+    description: string;
+    createdAt?: Date;
+}
+
+export interface User {
+    id: string;
+    email: string;
+    name: string;
+    role: 'parent' | 'treasurer';
+    groupId: string;
+    studentIds?: string[];
+}
+
+export interface AuthResponse {
+    user: User;
+    token: string;
+    group: Group;
+}

@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Verify } from 'crypto';
-import { Init } from 'v8';
+import { MonthlyResume } from '../monthly-resume/monthly-resume';
+import { SearchResults } from '../search-results/search-results';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [MonthlyResume, SearchResults],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
@@ -40,6 +41,8 @@ export class Dashboard implements OnInit{
   onSearch(event: Event){
     const input = event.target as HTMLInputElement;
     this.searchTerm = input.value.toLowerCase();
+    console.log(this.searchTerm);
+    
   }
 
 }

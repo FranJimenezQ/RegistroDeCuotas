@@ -1,0 +1,18 @@
+<!--Resultados de la busqueda-->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 pb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Resultados de la busqueda</h2>
+    @if (searchTerm) {
+        @for (detail of studentDetails(); track detail.name) {
+            <div>
+                <h3>{{detail.name}}</h3>
+                <div class="flex gap-6 text-sm text-gray-600">
+                            <span>Total pagado: ${{detail.totalPaid | number:'1.2-2'}}</span>
+                            <span class="text-green-600">Pagos al día: {{detail.paidCount}}</span>
+                            <span class="text-red-600">Pagos morosos: {{detail.overdueCount}}</span>
+                </div>
+            </div>
+        }
+    } @else {
+        <p class="text-gray-600">No se encontraron resultados para la busqueda.</p>
+    }
+</div>
